@@ -2,6 +2,8 @@ package com.yedam.app.emp.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.yedam.app.emp.service.EmpVO;
 
 public interface EmpMapper {
@@ -18,5 +20,7 @@ public interface EmpMapper {
 	public int updateEmp(EmpVO empVO);
 	
 	// 삭제
-	public int deleteEmp(int employeeId);
+	public int deleteEmp(@Param("eid") int employeeId);	
+	// @Param("문자"): 매퍼 xml 파일에서 사용되는 #{문자}
+	// ex) updateEmp(@Param("emp") EmpVO empVO) 일 시, xml에서는 #{emp.lastName} 이런 식으로 사용
 }
